@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block title %}Payment{% endblock %}
+    {% block content %}
+      <h1 class="mb-4">Payment Interface</h1>
+      {% if payment %}
+        <div class="card mx-auto w-50">
+          <div class="card-body">
+            <h5 class="card-title">Payment Successful</h5>
+            <p class="card-text"><strong>Transaction ID:</strong> {{ payment.transaction_id }}</p>
+            <p class="card-text"><strong>Order ID:</strong> {{ payment.order_id }}</p>
+            <p class="card-text"><strong>Amount:</strong> {{ payment.amount }}</p>
+            <a href="/" class="btn btn-primary">Back</a>
+          </div>
+        </div>
+      {% else %}
+        <form method="POST" class="w-50 mx-auto">
+          <div class="mb-3">
+            <label for="order_id" class="form-label">Order ID:</label>
+            <input type="number" name="order_id" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="amount" class="form-label">Amount:</label>
+            <input type="text" name="amount" class="form-control" required>
+          </div>
+          <button type="submit" class="btn btn-success">Pay</button>
+        </form>
+      {% endif %}
+    {% endblock %}
+    
+</body>
+</html>

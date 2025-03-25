@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Orders</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>Order List</h1>
+  <ul>
+    {% extends "base.html" %}
+{% block title %}Orders{% endblock %}
+{% block content %}
+  <h1 class="mb-4">Order List</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>User ID</th>
+        <th>Item</th>
+        <th>Payment Status</th>
+        <th>Transaction ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for order in orders %}
+      <tr>
+        <td>{{ order.id }}</td>
+        <td>{{ order.user_id }}</td>
+        <td>{{ order.item }}</td>
+        <td>{{ order.transaction_status if order.transaction_status else 'Not Paid' }}</td>
+        <td>{{ order.transaction_id if order.transaction_id else '-' }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+  </ul>
+  <a href="/">Back</a>
+</body>
+</html>

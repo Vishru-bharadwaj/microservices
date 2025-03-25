@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Microservices Home</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block title %}Home - Flask Microservices{% endblock %}
+    {% block content %}
+      <div class="text-center">
+        <h1 class="mb-3">Welcome to Flask Microservices</h1>
+        <p class="lead">Manage users, orders, and payments seamlessly.</p>
+      </div>
+    {% endblock %}
+    
+</body>
+</html>
